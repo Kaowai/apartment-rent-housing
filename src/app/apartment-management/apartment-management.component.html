@@ -1,8 +1,8 @@
 <section class="listing">
   <div class="filter-bar">
-    <input id="name" type="text" placeholder="Name" />
-    <select name="address" id="address">
-      <option value="Location">Location</option>
+    <input id="name" type="text" #filter placeholder="Name" />
+    <select name="address" id="address" #address>
+      <option value="">Location</option>
       <option value="1">1 District</option>
       <option value="2">2 District</option>
       <option value="3">3 District</option>
@@ -18,23 +18,26 @@
       <option value="Tan Phu">Tan Phu</option>
       <option value="Thu Duc">Thu Duc</option>
     </select>
-    <select name="state" id="state">
+    <select name="state" id="state" #state>
       <option value="All">All</option>
       <option value="available">Available</option>
-      <option value="release">Release</option>
+      <option value="rent">Rent</option>
     </select>
-    <select name="state" id="state">
-      <option value="All">All</option>
-      <option value="available">Available</option>
-      <option value="release">Release</option>
-    </select>
-    <select name="sort" id="sort">
+    <select name="sort" id="sort" #sort>
       <option value="Sort">Sort by Registers</option>
       <option value="mintomax">Min to max</option>
       <option value="maxtomin">Max to min</option>
     </select>
-    <button class="submit" type="submit">Search</button>
-    <button class="create" type="button" (click)="openCreatePopup()">Create new</button>
+    <button
+      class="submit"
+      type="submit"
+      (click)="onSearch(filter.value, address.value, state.value, sort.value)"
+    >
+      Search
+    </button>
+    <button class="create" type="button" (click)="openCreatePopup()">
+      Create new
+    </button>
   </div>
   <div class="listing-apartment">
     <table>
