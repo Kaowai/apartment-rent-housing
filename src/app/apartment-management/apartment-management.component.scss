@@ -1,0 +1,80 @@
+input,
+select {
+  font-size: 0.9em;
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--primary-color);
+  outline: none;
+}
+
+button.submit {
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 550;
+  border-radius: 4px;
+  height: 43px;
+}
+
+button.create {
+  width: 100%;
+  cursor: pointer;
+  color: black;
+  border: 1px solid grey;
+  color: white;
+  font-weight: 550;
+  border-radius: 4px;
+  height: 43px;
+}
+
+button.create:hover {
+  transition: ease-in 0.1s;
+  background-color: grey;
+}
+
+button.submit:hover {
+  transition: ease-in 0.1s;
+  background-color: #091057;
+}
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 400px));
+  justify-content: space-around;
+}
+
+.listing-apartment {
+  padding: 20px 60px;
+}
+table {
+  width: 100%;
+  border: 1px solid var(--grey-color);
+  border-collapse: collapse;
+  thead {
+    padding: 0px;
+  }
+  th {
+    background-color: var(--grey-color);
+    font-weight: bold;
+
+    padding: 10px;
+  }
+  tr {
+    cursor: pointer;
+    border: 1px solid var(--grey-color);
+  }
+  tr:hover {
+    background-color: var(--grey-color);
+  }
+  td {
+    padding: 15px;
+  }
+}

@@ -1,0 +1,132 @@
+@mixin hover-item {
+  color: var(--secondary-color);
+  transition: 0.5s all;
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    a {
+      overflow-y: hidden;
+    }
+    .navigation-bar {
+      margin-right: 150px;
+      overflow-y: hidden;
+    }
+  }
+}
+
+header {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  top: 0;
+  height: 80px;
+  overflow-y: hidden;
+  width: 100vw;
+  background-color: white;
+  z-index: 10;
+  padding: 10px;
+  box-shadow: 0px 1px 1px var(--accent-color);
+  a {
+    text-decoration: none;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    p {
+      font-weight: 600;
+      font-size: 20pt;
+    }
+  }
+
+  .navigation-bar {
+    padding: 10px;
+    margin-right: 20px;
+    ul {
+      display: flex;
+      gap: 30px;
+      li {
+        font-weight: 600;
+        font-size: 14pt;
+        list-style-type: none;
+        cursor: pointer;
+      }
+      li:hover {
+        @include hover-item;
+      }
+    }
+  }
+}
+
+.content {
+  margin-top: 80px;
+  width: 100vw;
+  padding: var(--content-padding);
+  background-color: var(--background-color);
+  overflow-y: visible;
+}
+.brand-logo {
+  height: 50px;
+  width: 50px;
+}
+
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  display: flex;
+}
+button {
+  padding: 10px;
+  border: solid 1px var(--primary-color);
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+input[type="text"] {
+  border: solid 1px var(--primary-color);
+  padding: 10px;
+  border-radius: 8px;
+  margin-right: 4px;
+  display: inline-block;
+  width: 500px;
+  background-color: white;
+  position: relative;;
+}
+input[type="text"]:focus {
+  border: solid 1px var(--secondary-color);
+  outline: none;
+}
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  input[type="text"] {
+    width: 70%;
+  }
+}
+.results-panel {
+  z-index: 1100;
+  width: 500px;
+  height: 200px;
+  position: fixed;
+  background-color: white;
+  top: 62px;
+  border-radius: 4px;
+  left: 380px;
+  visibility: hidden;
+  transition: visibility 0.2s, opacity 0.2s;
+  opacity: 0;
+}
+
+.results-panel.visible {
+  visibility: visible;
+  opacity: 1;
+}

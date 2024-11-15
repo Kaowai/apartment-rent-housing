@@ -1,0 +1,26 @@
+<section class="listing">
+  <img
+    class="listing-photo"
+    [src]="housingLocation.photo"
+    alt="Exterior photo of {{ housingLocation.name }}"
+    crossorigin
+  />
+  <h4 class="listing-heading">{{ housingLocation.name }}</h4>
+  <p class="listing-location">
+    {{ housingLocation.city }}
+  </p>
+  <div class="info">
+    <div>
+      <img src="assets/bedroom.png" class="image-icon" />
+      <span class="bedroom">{{ housingLocation.bedrooms }}</span>
+    </div>
+    <div>
+      <img src="assets/bathroom.png" class="image-icon" />
+      <span class="badroom">{{ housingLocation.bathroom }}</span>
+    </div>
+    <div>
+      <span class="area">{{ housingLocation.area }} m2</span>
+    </div>
+  </div>
+  <a [routerLink]="['/details', housingLocation.id]">Learn More</a>
+</section>

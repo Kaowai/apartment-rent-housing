@@ -1,0 +1,46 @@
+.container {
+  .sidebar {
+    height: 100vh;
+    position: fixed;
+    overflow-y: hidden;
+    width: 300px;
+    border-right: 1px solid var(--grey-color);
+  }
+  .content {
+    margin-left: 300px;
+    padding: 20px;
+    height: 100vh;
+    background-color: white;
+  }
+}
+.sidebar {
+  padding: 20px 10px;
+  height: 100vh;
+  background-color: white;
+  ul {
+    display: flex;
+    gap: 2px;
+    flex-direction: column;
+    a {
+      text-decoration: none;
+      color: black;
+      li {
+        font-weight: 550;
+        padding: 12px;
+        cursor: pointer;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+
+li:hover {
+  color: white;
+  background-color: var(--secondary-color);
+  transition: ease-out 100ms;
+}
+
+.active {
+  color: white;
+  background-color: var(--primary-color);
+}

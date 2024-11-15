@@ -1,0 +1,120 @@
+<article>
+  <section class="listing-description">
+    <h4 class="listing-heading">{{ housingLocation?.name }}</h4>
+    <div class="listing-state">{{ housingLocation?.state }}</div>
+    <p class="listing-location">
+      {{ housingLocation?.city }}
+    </p>
+  </section>
+  <div class="content">
+    <div class="column-1">
+      <section class="listing-images">
+        <img
+          class="listing-photo"
+          [src]="housingLocation?.photo"
+          alt="Exterior photo of {{ housingLocation?.name }}"
+          crossorigin
+        />
+      </section>
+      <section class="listing-features">
+        <h2 class="section-heading">About this housing location</h2>
+        <ul>
+          <li>
+            <p>Amount:</p>
+            <p>{{ housingLocation?.availableUnits }}</p>
+          </li>
+          <li>
+            <p>Bathrooms:</p>
+            <p>{{ housingLocation?.bathroom }}</p>
+          </li>
+          <li>
+            <p>Bedrooms:</p>
+            <p>{{ housingLocation?.bedrooms }}</p>
+          </li>
+          <li>
+            <p>Area:</p>
+            <p>{{ housingLocation?.area }} m2</p>
+          </li>
+          <li>
+            <p>Wifi:</p>
+            <p>{{ housingLocation?.wifi }}</p>
+          </li>
+          <li>
+            <p>Laundry:</p>
+            <p>{{ housingLocation?.laundry }}</p>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div class="column-2">
+      <section class="listing-apply">
+        <h2 class="section-heading">Apply now</h2>
+        <form [formGroup]="applyForm" novalidate>
+          <div class="group-input">
+            <input
+              id="first-name"
+              type="text"
+              formControlName="firstName"
+              placeholder="First name"
+            />
+            <p
+              *ngIf="
+                !firstName?.valid && (firstName?.dirty || firstName?.touched)
+              "
+            >
+              First name is not valid
+            </p>
+          </div>
+          <div class="group-input">
+            <input
+              id="last-name"
+              type="text"
+              formControlName="lastName"
+              placeholder="Last name"
+            />
+            <p
+              *ngIf="!lastName?.valid && (lastName?.dirty || lastName?.touched)"
+            >
+              Last name is not valid
+            </p>
+          </div>
+          <div class="group-input">
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              placeholder="Email"
+            />
+            <p *ngIf="!email?.valid && (email?.dirty || email?.touched)">
+              Email is not valid
+            </p>
+          </div>
+          <div class="group-input">
+            <input
+              id="phone"
+              type="text"
+              formControlName="phoneNumber"
+              placeholder="Phone number"
+            />
+            <p
+              *ngIf="
+                !phoneNumber?.valid &&
+                (phoneNumber?.dirty || phoneNumber?.touched)
+              "
+            >
+              Phone number is not valid
+            </p>
+          </div>
+          <button
+            type="submit"
+            (click)="submitApplication()"
+            [disabled]="!applyForm.valid"
+            class="primary"
+          >
+            Apply now
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+</article>

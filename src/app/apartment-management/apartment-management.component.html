@@ -1,0 +1,62 @@
+<section class="listing">
+  <div class="filter-bar">
+    <input id="name" type="text" placeholder="Name" />
+    <select name="address" id="address">
+      <option value="Location">Location</option>
+      <option value="1">1 District</option>
+      <option value="2">2 District</option>
+      <option value="3">3 District</option>
+      <option value="4">4 District</option>
+      <option value="5">5 District</option>
+      <option value="6">6 District</option>
+      <option value="7">7 District</option>
+      <option value="8">8 District</option>
+      <option value="9">9 District</option>
+      <option value="10">10 District</option>
+      <option value="Binh Thanh">Binh Thanh</option>
+      <option value="Tan Binh">Tan Binh</option>
+      <option value="Tan Phu">Tan Phu</option>
+      <option value="Thu Duc">Thu Duc</option>
+    </select>
+    <select name="state" id="state">
+      <option value="All">All</option>
+      <option value="available">Available</option>
+      <option value="release">Release</option>
+    </select>
+    <select name="state" id="state">
+      <option value="All">All</option>
+      <option value="available">Available</option>
+      <option value="release">Release</option>
+    </select>
+    <select name="sort" id="sort">
+      <option value="Sort">Sort by Registers</option>
+      <option value="mintomax">Min to max</option>
+      <option value="maxtomin">Max to min</option>
+    </select>
+    <button class="submit" type="submit">Search</button>
+    <button class="create" type="button" (click)="openCreatePopup()">Create new</button>
+  </div>
+  <div class="listing-apartment">
+    <table>
+      <thead>
+        <th align="left">ID</th>
+        <th align="left">Name</th>
+        <th align="left">Location</th>
+        <th align="left">State</th>
+        <th align="left">Registers</th>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let housingLocation of housingLocationList"
+          (click)="openLocation(housingLocation)"
+        >
+          <td>{{ housingLocation.id }}</td>
+          <td>{{ housingLocation.name }}</td>
+          <td>{{ housingLocation.city }}</td>
+          <td>{{ housingLocation.state }}</td>
+          <td>{{ housingLocation.amountRegister }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="sidebar">
+    <ul>
+      <a [routerLink]="['/admin/dashboard']"
+        ><li [ngClass]="{ active: routerActive === 'dashboard' }">
+          Dashboard
+        </li></a
+      >
+      <a [routerLink]="['/admin/apartment-management']"
+        ><li [ngClass]="{ active: routerActive === 'apartment-management' }">
+          Apartment Management
+        </li></a
+      >
+      <a [routerLink]="['/admin/user']"
+        ><li [ngClass]="{ active: routerActive === 'user' }">User</li></a
+      >
+      <a [routerLink]="['/admin/account']"
+        ><li [ngClass]="{ active: routerActive === 'account' }">Account</li></a
+      >
+    </ul>
+  </div>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<section>
+  <div class="banner">
+  </div>
+</section>
+
+<section class="outstanding">
+  <h2>Top choice for you</h2>
+</section>
+
+<section class="results">
+  <app-housing-location
+    *ngFor="let housingLocation of filteredLocationList"
+    [housingLocation]="housingLocation"
+  ></app-housing-location>
+</section>

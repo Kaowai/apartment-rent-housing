@@ -1,0 +1,254 @@
+<div class="mat-dialog-container">
+  <div class="mat-dialog-header">
+    <h5>{{ housingLocation.name }}</h5>
+    <svg
+      (click)="close()"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 512 512"
+    >
+      <path
+        d="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"
+      />
+    </svg>
+  </div>
+  <div class="mat-dialog-content">
+    @if(!isEdit) {
+    <img
+      src="{{ housingLocation.photo }}"
+      alt="housingLocation"
+      class="image-sample"
+    />
+    } @else {
+    <div class="container-image-upload">
+      <img
+        src="{{ !previewImageUrl ? housingLocation.photo : previewImageUrl }}"
+        alt="housingLocation"
+        class="image-sample-upload"
+      />
+
+      <input
+        type="file"
+        class="input-image"
+        id="img"
+        name="img"
+        accept="image/*"
+        (change)="onFileSelected($event)"
+      />
+    </div>
+    }
+
+    <form [formGroup]="apartmentForm" novalidate class="mat-dialog-info">
+      <span>
+        Location: @if (!isEdit) {
+        <p>{{ housingLocation.city }}</p>
+        } @else {
+        <div class="group-input">
+          <input
+            type="text"
+            formControlName="location"
+            (focus)="isResultsVisible = true"
+            class="input-location"
+            #filter
+            (input)="onSearch($event)"
+            placeholder="{{ city }}"
+          />
+          <p *ngIf="!location?.valid && (location?.dirty || location?.touched)">
+            Location must be filled
+          </p>
+        </div>
+        <div
+          class="search-bar"
+          [ngClass]="{ visible: isResultsVisible }"
+          (mouseleave)="isResultsVisible = false"
+        >
+          <div class="search-list-result">
+            @if (filter.value === '') { No results } @else {
+            <p
+              *ngFor="let location of citiesListQueries"
+              (click)="updateLocation(location.path_with_type)"
+            >
+              {{ location.path_with_type }}
+            </p>
+            }
+          </div>
+        </div>
+        }
+      </span>
+      <span>
+        Bathrooms: @if (!isEdit) {
+        <p>{{ housingLocation.bathroom }}</p>
+        } @else {
+        <div class="group-input">
+          <select name="bathrooms" id="" formControlName="bathrooms">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <p
+            *ngIf="
+              !bathrooms?.valid && (bathrooms?.dirty || bathrooms?.touched)
+            "
+          >
+            Bathrooms must be filled
+          </p>
+        </div>
+        }
+      </span>
+      <span>
+        Bedrooms: @if (!isEdit) {
+        <p>{{ housingLocation.bedrooms }}</p>
+        } @else {
+        <div class="group-input">
+          <select name="bedrooms" id="" formControlName="bedrooms">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+          <p *ngIf="!bedrooms?.valid && (bedrooms?.dirty || bedrooms?.touched)">
+            Bedrooms must be filled
+          </p>
+        </div>
+        }
+      </span>
+      <span>
+        Laundry: @if (!isEdit) {
+        <p>{{ housingLocation.laundry }}</p>
+        } @else {
+        <div class="group-input">
+          <select name="laundry" id="" formControlName="laundry">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+          <p *ngIf="!laundry?.valid && (laundry?.dirty || laundry?.touched)">
+            Laundry must be filled
+          </p>
+        </div>
+        }
+      </span>
+      <span>
+        Available: @if (!isEdit) {
+        <p>{{ housingLocation.availableUnits }}</p>
+        } @else {
+        <div class="group-input">
+          <select name="availableUnits" id="" formControlName="available">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+          </select>
+          <p
+            *ngIf="
+              !available?.valid && (available?.dirty || available?.touched)
+            "
+          >
+            Available units must be filled
+          </p>
+        </div>
+        }
+      </span>
+      <span>
+        Wifi: @if (!isEdit) {
+        <p>{{ housingLocation.wifi }}</p>
+        } @else {
+        <div class="group-input">
+          <select name="wifi" id="" formControlName="wifi">
+            <option value="yes">yes</option>
+            <option value="no">no</option>
+          </select>
+          <p *ngIf="!wifi?.valid && (wifi?.dirty || wifi?.touched)">
+            Wifi must be filled
+          </p>
+        </div>
+        }
+      </span>
+      <span>
+        Area: @if (!isEdit) {
+        <p>{{ housingLocation.area }}</p>
+        } @else {
+        <div class="group-input">
+          <input
+            type="text"
+            formControlName="area"
+            value="{{ housingLocation.area }}"
+            placeholder="{{ housingLocation.area }}"
+          />
+          <p *ngIf="!area?.valid && (area?.dirty || area?.touched)">
+            Area must be filled
+          </p>
+        </div>
+
+        }
+      </span>
+      <span>
+        State: @if (!isEdit) { @if (housingLocation.state === "Available" ||
+        housingLocation.state === "available") {
+        <p class="available">{{ housingLocation.state }}</p>
+        } @else {
+        <p class="rent">{{ housingLocation.state }}</p>
+        } } @else {
+        <div class="group-input">
+          <select name="state" id="" formControlName="state">
+            <option value="available">Available</option>
+            <option value="rent">Rent</option>
+          </select>
+          <p *ngIf="!state?.valid && (state?.dirty || state?.touched)">
+            State must be filled
+          </p>
+        </div>
+        }
+      </span>
+    </form>
+  </div>
+  <div class="mat-dialog-actions">
+    <button
+      [disabled]="isEdit"
+      class="delete button"
+      (click)="deleteLocation()"
+    >
+      Delete
+    </button>
+    <button
+      class="edit button"
+      [disabled]="!apartmentForm.valid && isEdit"
+      (click)="editLocation()"
+    >
+      {{ !isEdit ? "Edit" : "Update" }}
+    </button>
+  </div>
+  <div class="mat-dialog-register-form">
+    <h3>Register form</h3>
+    <p>Amount: {{ formRegisterList.length }}</p>
+    <div class="mat-dialog-register-form-table">
+      @if (formRegisterList.length === 0) { } @else {
+      <table>
+        <thead>
+          <th align="left">First name</th>
+          <th align="left">Last name</th>
+          <th align="left">Phone number</th>
+          <th align="left">Email</th>
+          <th></th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let formRegister of formRegisterList">
+            <td>{{ formRegister?.firstName }}</td>
+            <td>{{ formRegister?.lastName }}</td>
+            <td>{{ formRegister?.phoneNumber }}</td>
+            <td>{{ formRegister?.email }}</td>
+            <td>
+              <button (click)="onDelete(formRegister.id)" class="delete-button">
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      }
+    </div>
+  </div>
+</div>

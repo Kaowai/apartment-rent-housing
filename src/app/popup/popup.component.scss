@@ -1,0 +1,26 @@
+.mat-dialog-container {
+    border-radius: 0px !important;
+    width: 600px !important;
+    height: 240px !important;
+    border-radius: inherit;
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h1 {
+    font-size: 1.6em;
+}
+
+button {
+    border: none;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 4px;
+    padding: 15px;
+}
+
+button:hover {
+    background-color: var(--secondary-color);
+}

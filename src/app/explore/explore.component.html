@@ -1,0 +1,51 @@
+<div class="container">
+  <section class="filter-bar">
+    <h3>Filter your apartment</h3>
+    <div>
+      <input class="address" type="text" placeholder="Address" />
+    </div>
+    <div>
+      <select name="Type" id="type">
+        <option value="Apartment">Apartment</option>
+        <option value="Studio">Studio</option>
+        <option value="Homestay">Homestay</option>
+        <option value="Villa">Villa</option>
+      </select>
+    </div>
+    <div>
+      <select name="Bedrooms" id="bedrooms">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div>
+      <select name="Bathrooms" id="bathrooms">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </div>
+    <div>
+      <button class="search-button">Search</button>
+    </div>
+  </section>
+
+  <div class="column-2">
+    <p>
+      {{ filteredLocationList.length }} results @if (value==='' ||
+      value===undefined) { } @else {for "{{ value }}"}
+    </p>
+    <section class="results">
+      <app-housing-location
+        *ngFor="let housingLocation of filteredLocationList"
+        [housingLocation]="housingLocation"
+      >
+      </app-housing-location>
+    </section>
+  </div>
+</div>

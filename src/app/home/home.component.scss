@@ -1,0 +1,54 @@
+.banner {
+  background-image: url('./../../assets/apartment.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  width: 100vw;
+  height: 580px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  
+}
+
+
+.results {
+  display: grid;
+  column-gap: 14px;
+  row-gap: 14px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 320px));
+  margin-top: 50px;
+  justify-content: space-around;
+}
+
+
+
+
+
+
+@media (min-width: 500px) and (max-width: 768px) {
+  .results {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  input[type="text"] {
+    width: 70%;
+  }
+}
+@media (max-width: 499px) {
+  .results {
+    grid-template-columns: 1fr;
+  }
+}
+
+.outstanding {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  h2 {
+    font-weight: 600;
+    font-size: 2em;
+  }
+  padding: 20px;
+}

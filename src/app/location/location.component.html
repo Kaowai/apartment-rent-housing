@@ -1,0 +1,6 @@
+<a [routerLink]="['/explore']" [queryParams]="{ name: location?.path }">
+  <div class="result">
+    <i class="fa-solid fa-location-dot"></i>
+    <p>{{ location?.path }}</p>
+  </div>
+</a>

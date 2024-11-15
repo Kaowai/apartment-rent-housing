@@ -1,0 +1,77 @@
+.listing {
+  background-color: white;
+  border-radius: 6px;
+  height: 360px;
+  overflow-y: hidden;
+  cursor: pointer;
+}
+
+.listing-heading {
+  color: black;
+  padding: 10px 20px 0 20px;
+  font-weight: 600;
+  font-size: 1.2em;
+  height: 40px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.listing-heading:hover {
+  color: var(--primary-color);
+  
+}
+
+.listing-photo {
+  height: 160px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px 6px 0 0;
+}
+
+.listing-location {
+  padding: 10px 20px 20px 20px;
+  text-overflow: ellipsis;
+  color: var(--grey-color);
+  font-size: 10pt;
+}
+
+section.listing a {
+  padding-left: 20px;
+  display: flex;
+  font-size: 0.9rem;
+  text-decoration: none;
+  color: var(--primary-color);
+}
+
+section.listing a::after {
+  content: "\203A\203A\203A";
+  margin-left: 5px;
+}
+
+.image-icon {
+  height: 12px;
+  width: 12px;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 0 10px 20px;
+  div {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+}
+
+span {
+  font-size: 10pt;
+}
+
+section.listing a:hover {
+  color: black;
+  font-weight: 500;
+  transition: ease-in-out 200ms;
+}

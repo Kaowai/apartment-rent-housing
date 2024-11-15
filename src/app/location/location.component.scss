@@ -1,0 +1,13 @@
+.result {
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  padding: 15px;
+  border-bottom: 1px solid var(--grey-color);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
