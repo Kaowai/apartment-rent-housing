@@ -1,8 +1,8 @@
+import { HousingLocation } from './../housinglocation';
 import { distinctUntilChanged, finalize, switchMap } from 'rxjs/operators';
 import { Component, inject, Inject, OnDestroy, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AdminPopupService } from './admin-popup.service';
-import { HousingLocation } from '../housinglocation';
 import { HousingService } from '../housing.service';
 import { FormRegister } from '../../form-register';
 import { CommonModule } from '@angular/common';
@@ -39,19 +39,36 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
   selectedFile: File | null = null;
   updateImageUrl: string = '';
   bucket: string = '21520537';
+  isLoading = true;
 
   private searchSubject = new Subject<string>();
   private readonly debounceTimeMs = 300;
 
   apartmentForm = new FormGroup({
-    location: new FormControl('', [Validators.required]),
-    bathrooms: new FormControl('', [Validators.required]),
-    bedrooms: new FormControl('', [Validators.required]),
-    laundry: new FormControl('', [Validators.required]),
-    available: new FormControl('', [Validators.required]),
-    wifi: new FormControl('', [Validators.required]),
-    area: new FormControl('', [Validators.required]),
-    state: new FormControl('', [Validators.required]),
+    location: new FormControl(this.housingLocation?.city ?? '', [
+      Validators.required,
+    ]),
+    bathrooms: new FormControl(this.housingLocation?.bathroom ?? '', [
+      Validators.required,
+    ]),
+    bedrooms: new FormControl(this.housingLocation?.bedrooms ?? '', [
+      Validators.required,
+    ]),
+    laundry: new FormControl(this.housingLocation?.laundry ?? '', [
+      Validators.required,
+    ]),
+    available: new FormControl(this.housingLocation?.availableUnits ?? '', [
+      Validators.required,
+    ]),
+    wifi: new FormControl(this.housingLocation?.wifi ?? '', [
+      Validators.required,
+    ]),
+    area: new FormControl(this.housingLocation?.area ?? '', [
+      Validators.required,
+    ]),
+    state: new FormControl(this.housingLocation?.state ?? '', [
+      Validators.required,
+    ]),
   });
 
   get location() {
@@ -105,17 +122,16 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
       .subscribe({
         next: ({ data, error }) => {
           if (error) {
+            this.isLoading = false;
           } else {
-            console.log('Download Image successfully', data);
             if (data instanceof Blob) {
               const imageUrl = URL.createObjectURL(data);
               this.housingLocation.photo = imageUrl;
+              this.isLoading = false;
             }
           }
         },
-        error: (error) => {
-          console.log('Get image Failed', error);
-        },
+        error: (error) => {},
       });
 
     this.housingService.getAllCities().subscribe((response) => {
@@ -164,8 +180,6 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
       )
       .subscribe({
         next: (response) => {
-          console.log('Cập nhật thành công', response);
-
           // Cập nhật danh sách formRegisterList
           this.formRegisterList = this.formRegisterList.filter(
             (formRegister) => formRegister.id !== id
@@ -174,9 +188,7 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
           // Gửi thông báo dữ liệu đã được cập nhật
           this.housingService.notifyDataUpdate(true);
         },
-        error: (error) => {
-          console.log('Lỗi xảy ra trong quá trình xử lý:', error);
-        },
+        error: (error) => {},
       });
   }
   performSearch(searchValue: string) {
@@ -197,7 +209,6 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
       .deleteLocation(this.housingLocation.id)
       .pipe(
         switchMap((response) => {
-          console.log('Deleted on database successfully', response);
           return this.storageService.remove(
             this.bucket,
             this.housingLocation.id
@@ -207,16 +218,12 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
       .subscribe({
         next: ({ data, error }) => {
           if (error) {
-            console.log('Deleted failed', error);
           } else {
-            console.log('Deleted completed', data);
             this.housingService.notifyDataUpdate(true);
             this.popupService.closePopup();
           }
         },
-        error: (error) => {
-          console.log('Something went wrong', error);
-        },
+        error: (error) => {},
       });
   }
 
@@ -224,6 +231,7 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
   editLocation() {
     // handle update
     if (this.isEdit === true) {
+      this.isLoading = true;
       if (this.selectedFile) {
         const id = this.housingLocation.id;
 
@@ -233,7 +241,6 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
           .pipe(
             switchMap(({ data, error }) => {
               if (error) {
-                console.log('Push image fail: ', error);
                 // Nếu upload thất bại, chuyển sang update file
                 return this.storageService.update(
                   this.bucket,
@@ -241,7 +248,6 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
                   this.selectedFile!
                 );
               } else {
-                console.log('Push image successfully', data);
                 // Nếu upload thành công, trả về một Observable hoàn thành
                 const url = `${supabaseConfig.supabaseUrl}/storage/v1/object/public/${this.bucket}/${id}`;
                 const updatedLocation = this.createApartment(url);
@@ -253,16 +259,14 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
           .subscribe({
             next: ({ data, error }) => {
               if (error) {
-                console.log('Update fail: ', error);
               } else {
-                console.log('Update again', data);
                 const url = `${supabaseConfig.supabaseUrl}/storage/v1/object/public/${this.bucket}/${id}`;
                 const updatedLocation = this.createApartment(url);
                 this.pushHousingService(updatedLocation);
               }
             },
             error: (error) => {
-              console.log('Final error: ', error);
+              this.isLoading = false;
             },
           });
       } else {
@@ -286,9 +290,7 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
           this.housingService.notifyDataUpdate(true);
           this.refreshData();
         },
-        (error) => {
-          console.log('Update failure', error);
-        }
+        (error) => {}
       );
   }
 
@@ -325,29 +327,26 @@ export class AdminViewPopupComponent implements OnInit, OnDestroy {
       .subscribe({
         next: ({ data, error }) => {
           if (error) {
-            console.log('Download Image error: ', error);
           } else {
-            console.log('Download Image successfully', data);
             if (data instanceof Blob) {
               const imageUrl = URL.createObjectURL(data);
               this.housingLocation.photo = imageUrl;
-              console.log(imageUrl);
             }
           }
+          this.isLoading = false;
         },
         error: (error) => {
-          console.log('Get image Failed', error);
+          this.isLoading = false;
         },
       });
 
     this.updateImageUrl = '';
+    this.previewImageUrl = '';
   }
 
   updateLocation(location: string) {
-    console.log('click');
     this.isResultsVisible = false;
     this.apartmentForm.controls.location.setValue(location);
-    console.log('location:', this.apartmentForm.value.location);
   }
 
   onFileSelected(event: Event): void {

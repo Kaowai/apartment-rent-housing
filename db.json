@@ -1,56 +1,28 @@
 {
   "locations": [
     {
-      "id": "0",
-      "name": "Studio Apartment of Vinhomes Grand Park",
-      "city": "Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh",
-      "state": "rent",
-      "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/0",
-      "availableUnits": 4,
-      "area": 12,
-      "bedrooms": 3,
-      "bathroom": 2,
-      "wifi": true,
-      "laundry": true,
-      "amountRegister": 0
-    },
-    {
       "id": "1",
       "name": "High Floor",
       "city": "Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh",
-      "state": "available",
-      "photo": "https://angular.dev/assets/images/tutorials/common/brandon-griggs-wR11KBaB86U-unsplash.jpg",
-      "availableUnits": 3,
-      "area": 36,
-      "bedrooms": 2,
-      "bathroom": 2,
+      "state": "rent",
+      "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/1",
+      "availableUnits": 2,
+      "area": 56,
+      "bedrooms": 3,
+      "bathroom": 3,
       "wifi": true,
       "laundry": true,
-      "amountRegister": 0
+      "amountRegister": 2
     },
     {
       "id": "2",
       "name": "Warm Beds Housing Support",
-      "city": "Phường Cầu Kho, Quận 1, Thành phố Hồ Chí Minh",
-      "state": "rent",
-      "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/2",
-      "availableUnits": 2,
-      "area": 63,
-      "bedrooms": 3,
-      "bathroom": 2,
-      "wifi": true,
-      "laundry": true,
-      "amountRegister": 0
-    },
-    {
-      "id": "3",
-      "name": "Homesteady Housing",
-      "city": "Phường Bến Thành, Quận 1, Thành phố Hồ Chí Minh",
+      "city": "Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh",
       "state": "available",
-      "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/3",
-      "availableUnits": 3,
-      "area": 24,
-      "bedrooms": 2,
+      "photo": "blob:http://localhost:4200/a229b82e-2463-4626-9c24-d18cfe34ddb1",
+      "availableUnits": 4,
+      "area": 25,
+      "bedrooms": 3,
       "bathroom": 3,
       "wifi": true,
       "laundry": true,
@@ -115,15 +87,15 @@
     {
       "id": "8",
       "name": "Seriously Safe Towns",
-      "city": "Nguyễn Cư Trinh, 1, Hồ Chí Minh",
-      "state": "Available",
-      "photo": "https://angular.dev/assets/images/tutorials/common/saru-robert-9rP3mxf8qWI-unsplash.jpg",
-      "availableUnits": 10,
-      "area": 32,
-      "bedrooms": 2,
-      "bathroom": 1,
-      "wifi": false,
-      "laundry": false,
+      "city": "Phường Nguyễn Thái Bình, Quận 1, Thành phố Hồ Chí Minh",
+      "state": "rent",
+      "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/8",
+      "availableUnits": 2,
+      "area": 56,
+      "bedrooms": 4,
+      "bathroom": 4,
+      "wifi": true,
+      "laundry": true,
       "amountRegister": 0
     },
     {
@@ -145,9 +117,9 @@
       "name": "Riverfront Residency",
       "city": "Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
       "state": "rent",
-      "photo": "blob:http://localhost:4200/19fcd277-8789-4a47-9f85-1a826f46370f",
+      "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/10",
       "availableUnits": 3,
-      "area": 100,
+      "area": 120,
       "bedrooms": 3,
       "bathroom": 2,
       "wifi": true,
@@ -171,11 +143,11 @@
     {
       "id": "12",
       "name": "Sunshine Towers",
-      "city": "Phường Tân Chánh Hiệp, Quận 12, Thành phố Hồ Chí Minh",
-      "state": "rent",
-      "photo": "https://plus.unsplash.com/premium_photo-1674676471104-3c4017645e6f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D",
+      "city": "Phường Tân Định, Quận 1, Thành phố Hồ Chí Minh",
+      "state": "available",
+      "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/12",
       "availableUnits": 2,
-      "area": 26,
+      "area": 63,
       "bedrooms": 3,
       "bathroom": 3,
       "wifi": true,
@@ -185,13 +157,13 @@
     {
       "id": "13",
       "name": "Eco Green Apartments",
-      "city": "Phường Đa Kao, Quận 1, Thành phố Hồ Chí Minh",
-      "state": "available",
+      "city": "Phường Bến Nghé, Quận 1, Thành phố Hồ Chí Minh",
+      "state": "rent",
       "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/13",
       "availableUnits": 3,
-      "area": 56,
-      "bedrooms": 2,
-      "bathroom": 2,
+      "area": 52,
+      "bedrooms": 3,
+      "bathroom": 3,
       "wifi": true,
       "laundry": true,
       "amountRegister": 0
@@ -220,6 +192,20 @@
       "area": 35,
       "bedrooms": 1,
       "bathroom": 1,
+      "wifi": true,
+      "laundry": true,
+      "amountRegister": 0
+    },
+    {
+      "id": "29624d90-c6ea-4312-b236-1959a5b254bc",
+      "name": "Thủ Thiêm",
+      "city": "Phường Tân Thuận Đông, Quận 7, Thành phố Hồ Chí Minh",
+      "state": "rent",
+      "photo": "https://cdskqktuaydhugkyuhjd.supabase.co/storage/v1/object/public/21520537/29624d90-c6ea-4312-b236-1959a5b254bc",
+      "availableUnits": 4,
+      "area": 25,
+      "bedrooms": 3,
+      "bathroom": 3,
       "wifi": true,
       "laundry": true,
       "amountRegister": 0
@@ -3769,5 +3755,22 @@
       "id": "0813"
     }
   ],
-  "formRegister": []
+  "formRegister": [
+    {
+      "id": "0757c857-75ed-4755-bb1a-03bd22d6c81d",
+      "firstName": "Cow",
+      "lastName": "Farm",
+      "email": "caohoaithcsant@gmail.com",
+      "phoneNumber": "0376073869",
+      "locationId": "1"
+    },
+    {
+      "id": "6bf1201c-1a93-485a-b64a-3717f7931f5c",
+      "firstName": "Cow",
+      "lastName": "Farm",
+      "email": "caohoaithcsant@gmail.com",
+      "phoneNumber": "0376073869",
+      "locationId": "1"
+    }
+  ]
 }

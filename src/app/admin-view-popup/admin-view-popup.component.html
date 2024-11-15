@@ -13,7 +13,11 @@
   </div>
   <div class="mat-dialog-content">
     @if(!isEdit) {
+    <div *ngIf="isLoading" class="loader-overlay">
+      <span class="loader"></span>
+    </div>
     <img
+      *ngIf="!isLoading"
       src="{{ housingLocation.photo }}"
       alt="housingLocation"
       class="image-sample"
